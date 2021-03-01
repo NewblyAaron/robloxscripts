@@ -123,3 +123,7 @@ uis.InputBegan:Connect(function(sex)
         vim:SendKeyEvent(false,Enum.KeyCode[_G.binds[sex.KeyCode.Name]],false,game)
     end
 end)
+
+print("Successfully executed! Go battle someone.")
+print("Execute '_G.AllPerfects = true' if you want to always hit notes no matter what.")
+print("Execute '_G.AllPerfects = false' if you want legit gameplay.")

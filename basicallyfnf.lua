@@ -82,7 +82,7 @@ end)
 setreadonly(game_metatable, true)
 
 -- credits to egg salad#3112 for his keybind script
-local binds = {
+_G.binds = {
     F = "Left",
     G = "Down",
     H = "Up",
@@ -98,14 +98,14 @@ game.Players.LocalPlayer.PlayerGui.ChildAdded:connect(function(v)
         isPlaying = true
         JudgementFrame.Visible = true
         
+        Judge.Text = ""
+        Judge.Font = Enum.Font.SourceSans
+        Timing.Text = ""
+        Timing.Font = Enum.Font.SourceSans
+
         if _G.AllPerfects then
             Timing.Text = "ALL PERFECTS ENABLED"
             Timing.Font = Enum.Font.SourceSansBold
-
-            wait(2)
-
-            Timing.Text = ""
-            Timing.Font = Enum.Font.SourceSans
         end
     end
 end)
@@ -118,8 +118,8 @@ game.Players.LocalPlayer.PlayerGui.ChildRemoved:connect(function(v)
 end)
 
 uis.InputBegan:Connect(function(sex)
-    if binds[sex.KeyCode.Name] and isPlaying then
-        vim:SendKeyEvent(true,Enum.KeyCode[binds[sex.KeyCode.Name]],false,game)
-        vim:SendKeyEvent(false,Enum.KeyCode[binds[sex.KeyCode.Name]],false,game)
+    if _G.binds[sex.KeyCode.Name] and isPlaying then
+        vim:SendKeyEvent(true,Enum.KeyCode[_G.binds[sex.KeyCode.Name]],false,game)
+        vim:SendKeyEvent(false,Enum.KeyCode[_G.binds[sex.KeyCode.Name]],false,game)
     end
 end)
